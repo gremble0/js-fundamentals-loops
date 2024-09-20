@@ -10,6 +10,7 @@ const deepThree = []
 
 // 1. Using a for loop from 1 to 10, add the value of the 'loop index' to the array 'simpleOne'
 //    eg [1,2,3...]
+for (let i = START; i <= END; ++i) simpleOne.push(i)
 
 // HINT: in the below loop, the statements and block of code needs to be changed
 // HINT: in the below loop, the var i represents the loop index
@@ -19,9 +20,16 @@ const deepThree = []
 
 // 2. Using nested for loops, add arrays to 'nestedOne' where each array has n copies of the outer 'loop index'
 //    eg [[1],[2,2],...]
+for (let i = START; i <= END; ++i) nestedOne.push(new Array(i).fill(i))
 
 // 3. As 2, but each array should contain the values from the outer 'loop index' to 1 inclusive. Update array 'nestedTwo'
 //    eg [[1],[2,1],...]
+for (let i = START; i <= END; ++i) {
+  let builder = new Array(i)
+  for (let j = START - 1, value = i; j < i; ++j, --value) builder[j] = value
+  nestedTwo.push(builder)
+}
+console.log(nestedTwo)
 
 // 4. As 2, but each array should contain arrays from 1 to the outer 'loop index' with the value of the outer 'loop index'. Update array 'deepOne'
 //    eg [[[1]],[[2],[2,2]],...]
